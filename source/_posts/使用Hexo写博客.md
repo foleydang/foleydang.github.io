@@ -1,5 +1,10 @@
 ---
 title: 使用Hexo写博客
+categories:
+  - 技术
+tags:
+  - Hexo
+  - 博客
 ---
 使用 Hexo 搭建博客，且采用 NexT 主题，详细介绍写一篇新博客的步骤。
 
