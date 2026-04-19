@@ -1,9 +1,15 @@
+https://foleydang.github.io/2026/04/19/Mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96-Starship%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/
 https://foleydang.github.io/tags/index.html
 https://foleydang.github.io/categories/index.html
 https://foleydang.github.io/about/index.html
 https://foleydang.github.io/2025/07/16/%E4%BD%BF%E7%94%A8Hexo%E5%86%99%E5%8D%9A%E5%AE%A2/
 https://foleydang.github.io/2024/01/16/hello-world/
 https://foleydang.github.io/
+https://foleydang.github.io/tags/Mac/
+https://foleydang.github.io/tags/Starship/
+https://foleydang.github.io/tags/%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/
+https://foleydang.github.io/tags/Shell/
 https://foleydang.github.io/tags/Hexo/
 https://foleydang.github.io/tags/%E5%8D%9A%E5%AE%A2/
+https://foleydang.github.io/categories/%E7%BB%88%E7%AB%AF%E5%B7%A5%E5%85%B7/
 https://foleydang.github.io/categories/%E6%8A%80%E6%9C%AF/

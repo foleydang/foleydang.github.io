@@ -1,6 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Mac终端美化 - Starship配置指南</title>
+    <url>/2026/04/19/Mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96-Starship%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>作为一名程序员，终端是日常工作中最频繁使用的工具之一。一个美观、高效的终端环境不仅能提升工作效率，还能让编程体验更加愉悦。本文将介绍如何使用 <strong>Starship</strong> 打造一个现代化、跨平台的终端提示符。</p>
+<h2 id="什么是-Starship？"><a href="#什么是-Starship？" class="headerlink" title="什么是 Starship？"></a>什么是 Starship？</h2><p>Starship 是一个轻量、快速、跨 shell 的现代化提示符工具。它具有以下特点：</p>
+<ul>
+<li><strong>跨平台</strong>：支持 macOS、Linux、Windows</li>
+<li><strong>跨 Shell</strong>：支持 Bash、Zsh、Fish、PowerShell 等</li>
+<li><strong>高度可定制</strong>：丰富的配置选项，支持自定义模块</li>
+<li><strong>性能优异</strong>：使用 Rust 编写，启动速度极快</li>
+<li><strong>美观大方</strong>：内置多种图标和颜色方案</li>
+</ul>
+<h2 id="安装前置条件"><a href="#安装前置条件" class="headerlink" title="安装前置条件"></a>安装前置条件</h2><p>在安装 Starship 之前，需要先安装一个支持 Powerline/Nerd 字体的字体包，否则终端图标可能显示为乱码。</p>
+<h3 id="安装-Nerd-Font"><a href="#安装-Nerd-Font" class="headerlink" title="安装 Nerd Font"></a>安装 Nerd Font</h3><p>推荐使用 Homebrew 安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装 Nerd Font 字体包</span></span><br><span class="line">brew tap homebrew/cask-fonts</span><br><span class="line">brew install --cask font-hack-nerd-font</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者安装其他流行的 Nerd Font</span></span><br><span class="line">brew install --cask font-meslo-lg-nerd-font</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，在终端设置中将字体改为 <code>Hack Nerd Font</code> 或 <code>MesloLGS NF</code>。</p>
+<blockquote>
+<p><strong>推荐字体</strong>：MesloLGS NF 是专为 Powerlevel10k 和 Starship 设计的字体，显示效果最佳。</p>
+</blockquote>
+<h2 id="安装-Starship"><a href="#安装-Starship" class="headerlink" title="安装 Starship"></a>安装 Starship</h2><h3 id="macOS-Homebrew"><a href="#macOS-Homebrew" class="headerlink" title="macOS (Homebrew)"></a>macOS (Homebrew)</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install starship</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他安装方式"><a href="#其他安装方式" class="headerlink" title="其他安装方式"></a>其他安装方式</h3><p>也可以使用 Shell 脚本安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -sS https://starship.rs/install.sh | sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置-Shell"><a href="#配置-Shell" class="headerlink" title="配置 Shell"></a>配置 Shell</h2><p>Starship 需要在 Shell 配置文件中初始化。根据你使用的 Shell，选择对应的配置方式。</p>
+<h3 id="Zsh-推荐"><a href="#Zsh-推荐" class="headerlink" title="Zsh (推荐)"></a>Zsh (推荐)</h3><p>在 <code>~/.zshrc</code> 文件末尾添加：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(starship init zsh)&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<h3 id="Bash"><a href="#Bash" class="headerlink" title="Bash"></a>Bash</h3><p>在 <code>~/.bashrc</code> 文件末尾添加：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(starship init bash)&quot;&#x27;</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h3 id="Fish"><a href="#Fish" class="headerlink" title="Fish"></a>Fish</h3><p>Fish Shell 会自动加载，只需添加初始化命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;starship init fish | source&#x27;</span> &gt;&gt; ~/.config/fish/config.fish</span><br></pre></td></tr></table></figure>
+
+<p>重新加载配置文件使更改生效：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Zsh</span></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># Bash</span></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置-Starship"><a href="#配置-Starship" class="headerlink" title="配置 Starship"></a>配置 Starship</h2><p>Starship 使用 TOML 格式的配置文件，默认位置为 <code>~/.config/starship.toml</code>。</p>
+<h3 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/.config</span><br><span class="line"><span class="built_in">touch</span> ~/.config/starship.toml</span><br></pre></td></tr></table></figure>
+
+<h3 id="推荐配置示例"><a href="#推荐配置示例" class="headerlink" title="推荐配置示例"></a>推荐配置示例</h3><p>以下是一个适合开发者的配置方案：</p>
+<figure class="highlight toml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ~/.config/starship.toml</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在命令之间添加空行</span></span><br><span class="line"><span class="attr">add_newline</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 提示符格式</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">[](#9A348E)$directory\</span></span><br><span class="line"><span class="string">[](fg:#9A348E bg:#DA627D)$git_branch$git_status\</span></span><br><span class="line"><span class="string">[](fg:#DA627D bg:#FCA17D)$nodejs$python$rust$golang\</span></span><br><span class="line"><span class="string">[](fg:#FCA17D bg:#86BBD8)$docker\</span></span><br><span class="line"><span class="string">[](fg:#86BBD8 bg:#06969A)$time\</span></span><br><span class="line"><span class="string">[ ](fg:#06969A)\</span></span><br><span class="line"><span class="string">$line_break$character&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 目录模块</span></span><br><span class="line"><span class="section">[directory]</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#9A348E&quot;</span></span><br><span class="line"><span class="attr">truncation_length</span> = <span class="number">3</span></span><br><span class="line"><span class="attr">truncation_symbol</span> = <span class="string">&quot;…/&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Git 分支</span></span><br><span class="line"><span class="section">[git_branch]</span></span><br><span class="line"><span class="attr">symbol</span> = <span class="string">&quot; &quot;</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#DA627D&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$symbol$branch ]($style)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Git 状态</span></span><br><span class="line"><span class="section">[git_status]</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#DA627D&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$all_status$ahead_behind ]($style)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Node.js</span></span><br><span class="line"><span class="section">[nodejs]</span></span><br><span class="line"><span class="attr">symbol</span> = <span class="string">&quot; &quot;</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#FCA17D&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$symbol($version )]($style)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Python</span></span><br><span class="line"><span class="section">[python]</span></span><br><span class="line"><span class="attr">symbol</span> = <span class="string">&quot; &quot;</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#FCA17D&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$symbol($version )]($style)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Rust</span></span><br><span class="line"><span class="section">[rust]</span></span><br><span class="line"><span class="attr">symbol</span> = <span class="string">&quot; &quot;</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#FCA17D&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$symbol($version )]($style)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Go</span></span><br><span class="line"><span class="section">[golang]</span></span><br><span class="line"><span class="attr">symbol</span> = <span class="string">&quot; &quot;</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#FCA17D&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$symbol($version )]($style)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Docker</span></span><br><span class="line"><span class="section">[docker_context]</span></span><br><span class="line"><span class="attr">symbol</span> = <span class="string">&quot; &quot;</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#86BBD8&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$symbol($context )]($style)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 时间显示</span></span><br><span class="line"><span class="section">[time]</span></span><br><span class="line"><span class="attr">disabled</span> = <span class="literal">false</span></span><br><span class="line"><span class="attr">time_format</span> = <span class="string">&quot;%R&quot;</span> <span class="comment"># 24小时制</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#06969A&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$time ]($style)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 命令提示符</span></span><br><span class="line"><span class="section">[character]</span></span><br><span class="line"><span class="attr">success_symbol</span> = <span class="string">&quot;[➜](bold green)&quot;</span></span><br><span class="line"><span class="attr">error_symbol</span> = <span class="string">&quot;[➜](bold red)&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="极简配置"><a href="#极简配置" class="headerlink" title="极简配置"></a>极简配置</h3><p>如果你喜欢简洁风格，可以使用以下配置：</p>
+<figure class="highlight toml"><table><tr><td class="code"><pre><span class="line"><span class="attr">add_newline</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="section">[character]</span></span><br><span class="line"><span class="attr">success_symbol</span> = <span class="string">&quot;[›](bold green)&quot;</span></span><br><span class="line"><span class="attr">error_symbol</span> = <span class="string">&quot;[›](bold red)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[directory]</span></span><br><span class="line"><span class="attr">truncation_length</span> = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="section">[git_branch]</span></span><br><span class="line"><span class="attr">symbol</span> = <span class="string">&quot;git:&quot;</span></span><br><span class="line"><span class="attr">truncation_length</span> = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="section">[git_status]</span></span><br><span class="line"><span class="attr">disabled</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[nodejs]</span></span><br><span class="line"><span class="attr">symbol</span> = <span class="string">&quot;node:&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&quot;[$symbol($version )]($style)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[python]</span></span><br><span class="line"><span class="attr">symbol</span> = <span class="string">&quot;py:&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&quot;[$symbol($version )]($style)&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="常用模块说明"><a href="#常用模块说明" class="headerlink" title="常用模块说明"></a>常用模块说明</h2><p>Starship 提供了丰富的模块来显示不同的信息：</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>说明</th>
+<th>触发条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>directory</code></td>
+<td>当前目录</td>
+<td>始终显示</td>
+</tr>
+<tr>
+<td><code>git_branch</code></td>
+<td>Git 分支名</td>
+<td>Git 仓库中</td>
+</tr>
+<tr>
+<td><code>git_status</code></td>
+<td>Git 状态</td>
+<td>Git 仓库中</td>
+</tr>
+<tr>
+<td><code>nodejs</code></td>
+<td>Node.js 版本</td>
+<td>存在 package.json 或 node_modules</td>
+</tr>
+<tr>
+<td><code>python</code></td>
+<td>Python 版本</td>
+<td>存在 .py 文件或虚拟环境</td>
+</tr>
+<tr>
+<td><code>rust</code></td>
+<td>Rust 版本</td>
+<td>存在 Cargo.toml</td>
+</tr>
+<tr>
+<td><code>golang</code></td>
+<td>Go 版本</td>
+<td>存在 go.mod</td>
+</tr>
+<tr>
+<td><code>docker_context</code></td>
+<td>Docker 上下文</td>
+<td>存在 Dockerfile 或 docker-compose.yml</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>当前时间</td>
+<td>需手动启用</td>
+</tr>
+<tr>
+<td><code>cmd_duration</code></td>
+<td>命令执行时间</td>
+<td>命令超过阈值</td>
+</tr>
+</tbody></table>
+<h2 id="进阶技巧"><a href="#进阶技巧" class="headerlink" title="进阶技巧"></a>进阶技巧</h2><h3 id="根据项目自动切换配置"><a href="#根据项目自动切换配置" class="headerlink" title="根据项目自动切换配置"></a>根据项目自动切换配置</h3><p>可以针对不同项目创建不同的配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在项目根目录创建 .starship.toml</span></span><br><span class="line"><span class="comment"># Starship 会自动检测并使用项目级配置</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义命令超时提示"><a href="#自定义命令超时提示" class="headerlink" title="自定义命令超时提示"></a>自定义命令超时提示</h3><figure class="highlight toml"><table><tr><td class="code"><pre><span class="line"><span class="section">[cmd_duration]</span></span><br><span class="line"><span class="attr">min_time</span> = <span class="number">500</span>  <span class="comment"># 超过500ms显示</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&quot;underwent [$duration](bold yellow)&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="显示-AWS-Kubernetes-上下文"><a href="#显示-AWS-Kubernetes-上下文" class="headerlink" title="显示 AWS/Kubernetes 上下文"></a>显示 AWS/Kubernetes 上下文</h3><figure class="highlight toml"><table><tr><td class="code"><pre><span class="line"><span class="section">[aws]</span></span><br><span class="line"><span class="attr">symbol</span> = <span class="string">&quot;☁️  &quot;</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bold yellow&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$symbol($profile )($region )]($style)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[kubernetes]</span></span><br><span class="line"><span class="attr">symbol</span> = <span class="string">&quot;☸ &quot;</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bold blue&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$symbol$context( \($namespace\))]($style)&#x27;</span></span><br><span class="line"><span class="attr">disabled</span> = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配合-iTerm2-使用"><a href="#配合-iTerm2-使用" class="headerlink" title="配合 iTerm2 使用"></a>配合 iTerm2 使用</h2><p>如果你使用 iTerm2，可以进一步优化终端体验：</p>
+<ol>
+<li><strong>设置字体</strong>：Preferences → Profiles → Text → Font → 选择 Nerd Font</li>
+<li><strong>启用真彩色</strong>：Preferences → Profiles → Terminal → Enable “True Color”</li>
+<li><strong>设置主题配色</strong>：推荐使用 Dracula 或 Snazzy 主题</li>
+</ol>
+<h2 id="配合-Oh-My-Zsh-使用"><a href="#配合-Oh-My-Zsh-使用" class="headerlink" title="配合 Oh My Zsh 使用"></a>配合 Oh My Zsh 使用</h2><p>如果你已经安装了 Oh My Zsh，需要移除其默认主题：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 编辑 ~/.zshrc</span></span><br><span class="line"><span class="comment"># 将 ZSH_THEME=&quot;robbyrussell&quot; 改为</span></span><br><span class="line">ZSH_THEME=<span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者直接使用 Starship 的 zsh 插件</span></span><br><span class="line"><span class="comment"># 安装 starship 插件到 Oh My Zsh</span></span><br><span class="line"><span class="built_in">mkdir</span> -p ~/.oh-my-zsh/custom/plugins/starship</span><br><span class="line"><span class="built_in">ln</span> -s <span class="string">&quot;<span class="subst">$(which starship)</span>&quot;</span> ~/.oh-my-zsh/custom/plugins/starship/starship.zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在 ~/.zshrc 的 plugins 中添加 starship</span></span><br><span class="line">plugins=(git starship)</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="图标显示为乱码"><a href="#图标显示为乱码" class="headerlink" title="图标显示为乱码"></a>图标显示为乱码</h3><p>确保终端字体设置为 Nerd Font，而不是普通字体。</p>
+<h3 id="启动速度慢"><a href="#启动速度慢" class="headerlink" title="启动速度慢"></a>启动速度慢</h3><p>检查是否有过多模块启用，减少不必要的模块可以提升启动速度。</p>
+<h3 id="Git-状态显示不正确"><a href="#Git-状态显示不正确" class="headerlink" title="Git 状态显示不正确"></a>Git 状态显示不正确</h3><p>确保 Git 版本 &gt;= 2.13，并检查 <code>git_status</code> 模块配置。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Starship 是一个强大且美观的终端提示符工具，通过简单的配置就能让你的终端焕然一新。结合 Nerd Font 字体和 iTerm2，可以打造一个专业、高效的开发环境。</p>
+<h3 id="推荐配置组合"><a href="#推荐配置组合" class="headerlink" title="推荐配置组合"></a>推荐配置组合</h3><ul>
+<li><strong>终端</strong>：iTerm2</li>
+<li><strong>Shell</strong>：Zsh + Oh My Zsh</li>
+<li><strong>提示符</strong>：Starship</li>
+<li><strong>字体</strong>：MesloLGS NF</li>
+<li><strong>配色</strong>：Dracula / Snazzy</li>
+</ul>
+<p> Happy Coding! </p>
+<hr>
+<blockquote>
+<p>参考链接：</p>
+<ul>
+<li><a href="https://starship.rs/">Starship 官方文档</a></li>
+<li><a href="https://www.nerdfonts.com/">Nerd Fonts</a></li>
+<li><a href="https://iterm2.com/">iTerm2</a></li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>终端工具</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>Starship</tag>
+        <tag>终端美化</tag>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2024/01/16/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
