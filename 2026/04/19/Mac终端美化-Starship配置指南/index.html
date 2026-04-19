@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-new-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-new-16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=consolas:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"foleydang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="作为一名程序员，终端是日常工作中最频繁使用的工具之一。一个美观、高效的终端环境不仅能提升工作效率，还能让编程体验更加愉悦。本文将介绍如何使用 Starship 打造一个现代化、跨平台的终端提示符。 什么是 Starship？Starship 是一个轻量、快速、跨 shell 的现代化提示符工具：  跨平台：支持 macOS、Linux、Windows 跨 Shell：支持 Bash、Zsh、Fis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac终端美化 - Starship配置指南">
+<meta property="og:url" content="https://foleydang.github.io/2026/04/19/Mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96-Starship%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="程序开发之道">
+<meta property="og:description" content="作为一名程序员，终端是日常工作中最频繁使用的工具之一。一个美观、高效的终端环境不仅能提升工作效率，还能让编程体验更加愉悦。本文将介绍如何使用 Starship 打造一个现代化、跨平台的终端提示符。 什么是 Starship？Starship 是一个轻量、快速、跨 shell 的现代化提示符工具：  跨平台：支持 macOS、Linux、Windows 跨 Shell：支持 Bash、Zsh、Fis">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-19T06:20:00.000Z">
+<meta property="article:modified_time" content="2026-04-19T07:09:56.070Z">
+<meta property="article:author" content="FoleyDang">
+<meta property="article:tag" content="Mac">
+<meta property="article:tag" content="Starship">
+<meta property="article:tag" content="终端美化">
+<meta property="article:tag" content="Shell">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://foleydang.github.io/2026/04/19/Mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96-Starship%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://foleydang.github.io/2026/04/19/Mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96-Starship%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/","path":"2026/04/19/Mac终端美化-Starship配置指南/","title":"Mac终端美化 - Starship配置指南"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Mac终端美化 - Starship配置指南 | 程序开发之道</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="程序开发之道" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">程序开发之道</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注技术的程序员</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">10</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="FoleyDang"
+      src="/images/avatar-github.png">
+  <p class="site-author-name" itemprop="name">FoleyDang</p>
+  <div class="site-description" itemprop="description">从机械转码的程序员，机械/硬软件/嵌入式/游戏开发/AI大模型应用</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/foleydang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;foleydang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://juejin.cn/user/2843816712732732" title="掘金 → https:&#x2F;&#x2F;juejin.cn&#x2F;user&#x2F;2843816712732732" rel="noopener me" target="_blank"><i class="fa fa-gem fa-fw"></i>掘金</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/dang-fei-54" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;dang-fei-54" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/4500796" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;4500796" rel="noopener me" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://foleydang.github.io/2026/04/19/Mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96-Starship%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-github.png">
+      <meta itemprop="name" content="FoleyDang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序开发之道">
+      <meta itemprop="description" content="从机械转码的程序员，机械/硬软件/嵌入式/游戏开发/AI大模型应用">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Mac终端美化 - Starship配置指南 | 程序开发之道">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Mac终端美化 - Starship配置指南
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-04-19 14:20:00 / 修改时间：15:09:56" itemprop="dateCreated datePublished" datetime="2026-04-19T14:20:00+08:00">2026-04-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BB%88%E7%AB%AF%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">终端工具</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>作为一名程序员，终端是日常工作中最频繁使用的工具之一。一个美观、高效的终端环境不仅能提升工作效率，还能让编程体验更加愉悦。本文将介绍如何使用 <strong>Starship</strong> 打造一个现代化、跨平台的终端提示符。</p>
+<h2 id="什么是-Starship？"><a href="#什么是-Starship？" class="headerlink" title="什么是 Starship？"></a>什么是 Starship？</h2><p>Starship 是一个轻量、快速、跨 shell 的现代化提示符工具：</p>
+<ul>
+<li><strong>跨平台</strong>：支持 macOS、Linux、Windows</li>
+<li><strong>跨 Shell</strong>：支持 Bash、Zsh、Fish、PowerShell 等</li>
+<li><strong>高度可定制</strong>：丰富的配置选项</li>
+<li><strong>性能优异</strong>：使用 Rust 编写，启动速度极快</li>
+</ul>
+<h2 id="安装前置条件"><a href="#安装前置条件" class="headerlink" title="安装前置条件"></a>安装前置条件</h2><p>安装一个 Nerd Font 字体，否则图标可能显示为乱码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 推荐 MesloLGS NF 字体</span></span><br><span class="line">brew tap homebrew/cask-fonts</span><br><span class="line">brew install --cask font-meslo-lg-nerd-font</span><br></pre></td></tr></table></figure>
+
+<p>安装后在终端设置中将字体改为 <code>MesloLGS NF</code>。</p>
+<h2 id="安装-Starship"><a href="#安装-Starship" class="headerlink" title="安装 Starship"></a>安装 Starship</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># macOS</span></span><br><span class="line">brew install starship</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux</span></span><br><span class="line">curl -sS https://starship.rs/install.sh | sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置-Shell"><a href="#配置-Shell" class="headerlink" title="配置 Shell"></a>配置 Shell</h2><p>根据你使用的 Shell 添加初始化命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Zsh</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(starship init zsh)&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># Bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(starship init bash)&quot;&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/.config</span><br><span class="line"><span class="built_in">touch</span> ~/.config/starship.toml</span><br></pre></td></tr></table></figure>
+
+<h3 id="推荐配置（青色背景风格）"><a href="#推荐配置（青色背景风格）" class="headerlink" title="推荐配置（青色背景风格）"></a>推荐配置（青色背景风格）</h3><p>一个简洁美观的配置效果：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ~/.config/starship.toml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">format</span> = <span class="string">&quot;&quot;&quot;[$username@$hostname$directory$git_branch$git_status](bg:cyan fg:black) $character&quot;&quot;&quot;</span></span><br><span class="line"><span class="attr">add_newline</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="section">[username]</span></span><br><span class="line"><span class="attr">show_always</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&quot;$user&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[hostname]</span></span><br><span class="line"><span class="attr">ssh_only</span> = <span class="literal">false</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&quot;$hostname&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[directory]</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&quot;&gt;$path&quot;</span></span><br><span class="line"><span class="attr">truncation_length</span> = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="section">[git_branch]</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&quot;&gt;$branch&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[git_status]</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&quot;$all_status&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[character]</span></span><br><span class="line"><span class="attr">success_symbol</span> = <span class="string">&quot;[❯](bold cyan)&quot;</span></span><br><span class="line"><span class="attr">error_symbol</span> = <span class="string">&quot;[❯](bold red)&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>效果展示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foleydang@hostname&gt;workspace&gt;master ❯</span><br></pre></td></tr></table></figure>
+
+<h3 id="Powerline-风格配置"><a href="#Powerline-风格配置" class="headerlink" title="Powerline 风格配置"></a>Powerline 风格配置</h3><p>如果你喜欢更丰富的效果：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">format</span> = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">[](#9A348E)$directory\</span></span><br><span class="line"><span class="string">[](fg:#9A348E bg:#DA627D)$git_branch$git_status\</span></span><br><span class="line"><span class="string">[](fg:#DA627D bg:#FCA17D)$nodejs$python$rust\</span></span><br><span class="line"><span class="string">[](fg:#FCA17D bg:#86BBD8)$time\</span></span><br><span class="line"><span class="string">[ ](fg:#86BBD8)\</span></span><br><span class="line"><span class="string">$line_break$character&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[directory]</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#9A348E&quot;</span></span><br><span class="line"><span class="attr">truncation_length</span> = <span class="number">3</span></span><br><span class="line"><span class="attr">truncation_symbol</span> = <span class="string">&quot;…/&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[git_branch]</span></span><br><span class="line"><span class="attr">symbol</span> = <span class="string">&quot; &quot;</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#DA627D&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$symbol$branch ]($style)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[git_status]</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#DA627D&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$all_status$ahead_behind ]($style)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[nodejs]</span></span><br><span class="line"><span class="attr">symbol</span> = <span class="string">&quot; &quot;</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#FCA17D&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$symbol($version )]($style)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[python]</span></span><br><span class="line"><span class="attr">symbol</span> = <span class="string">&quot; &quot;</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#FCA17D&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$symbol($version )]($style)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[time]</span></span><br><span class="line"><span class="attr">disabled</span> = <span class="literal">false</span></span><br><span class="line"><span class="attr">time_format</span> = <span class="string">&quot;%R&quot;</span></span><br><span class="line"><span class="attr">style</span> = <span class="string">&quot;bg:#86BBD8&quot;</span></span><br><span class="line"><span class="attr">format</span> = <span class="string">&#x27;[$time ]($style)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[character]</span></span><br><span class="line"><span class="attr">success_symbol</span> = <span class="string">&quot;[➜](bold green)&quot;</span></span><br><span class="line"><span class="attr">error_symbol</span> = <span class="string">&quot;[➜](bold red)&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="一键安装脚本"><a href="#一键安装脚本" class="headerlink" title="一键安装脚本"></a>一键安装脚本</h2><p>保存为 <code>install-starship.sh</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># Starship 一键安装脚本</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 Starship</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">command</span> -v brew &amp;&gt; /dev/null; <span class="keyword">then</span></span><br><span class="line">  brew install starship</span><br><span class="line"><span class="keyword">elif</span> <span class="built_in">command</span> -v curl &amp;&gt; /dev/null; <span class="keyword">then</span></span><br><span class="line">  curl -sS https://starship.rs/install.sh | sh</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;需要 Homebrew 或 curl 来安装 Starship&quot;</span></span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建配置文件</span></span><br><span class="line"><span class="built_in">mkdir</span> -p ~/.config</span><br><span class="line"><span class="built_in">cat</span> &gt; ~/.config/starship.toml &lt;&lt; <span class="string">&#x27;STARSHIP_EOF&#x27;</span></span><br><span class="line">format = <span class="string">&quot;&quot;</span><span class="string">&quot;[<span class="variable">$username</span>@$hostname$directory$git_branch<span class="variable">$git_status</span>](bg:cyan fg:black) <span class="variable">$character</span>&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">add_newline = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[username]</span><br><span class="line">show_always = <span class="literal">true</span></span><br><span class="line">format = <span class="string">&quot;<span class="variable">$user</span>&quot;</span></span><br><span class="line"></span><br><span class="line">[hostname]</span><br><span class="line">ssh_only = <span class="literal">false</span></span><br><span class="line">format = <span class="string">&quot;<span class="variable">$hostname</span>&quot;</span></span><br><span class="line"></span><br><span class="line">[directory]</span><br><span class="line">format = <span class="string">&quot;&gt;<span class="variable">$path</span>&quot;</span></span><br><span class="line">truncation_length = 3</span><br><span class="line"></span><br><span class="line">[git_branch]</span><br><span class="line">format = <span class="string">&quot;&gt;<span class="variable">$branch</span>&quot;</span></span><br><span class="line"></span><br><span class="line">[git_status]</span><br><span class="line">format = <span class="string">&quot;<span class="variable">$all_status</span>&quot;</span></span><br><span class="line"></span><br><span class="line">[character]</span><br><span class="line">success_symbol = <span class="string">&quot;[❯](bold cyan)&quot;</span></span><br><span class="line">error_symbol = <span class="string">&quot;[❯](bold red)&quot;</span></span><br><span class="line">STARSHIP_EOF</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加到 shell 配置</span></span><br><span class="line"><span class="keyword">if</span> [ -f ~/.zshrc ]; <span class="keyword">then</span></span><br><span class="line">  grep -q <span class="string">&quot;starship init zsh&quot;</span> ~/.zshrc || <span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(starship init zsh)&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;✅ 已添加到 ~/.zshrc&quot;</span></span><br><span class="line"><span class="keyword">elif</span> [ -f ~/.bashrc ]; <span class="keyword">then</span></span><br><span class="line">  grep -q <span class="string">&quot;starship init bash&quot;</span> ~/.bashrc || <span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(starship init bash)&quot;&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;✅ 已添加到 ~/.bashrc&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;✅ Starship 配置完成&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;运行 source ~/.zshrc 或 source ~/.bashrc 使配置生效&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x install-starship.sh</span><br><span class="line">./install-starship.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="远程主机迁移"><a href="#远程主机迁移" class="headerlink" title="远程主机迁移"></a>远程主机迁移</h2><h3 id="复制配置到远程主机"><a href="#复制配置到远程主机" class="headerlink" title="复制配置到远程主机"></a>复制配置到远程主机</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 复制配置文件</span></span><br><span class="line">scp ~/.config/starship.toml user@remote:~/.config/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在远程主机安装</span></span><br><span class="line">ssh user@remote <span class="string">&quot;curl -sS https://starship.rs/install.sh | sh&quot;</span></span><br><span class="line">ssh user@remote <span class="string">&quot;echo &#x27;eval \&quot;\$(starship init zsh)\&quot;&#x27; &gt;&gt; ~/.zshrc&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="使用一键脚本"><a href="#使用一键脚本" class="headerlink" title="使用一键脚本"></a>使用一键脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp install-starship.sh user@remote:~/ssh user@remote <span class="string">&quot;chmod +x ~/install-starship.sh &amp;&amp; ~/install-starship.sh&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义颜色"><a href="#自定义颜色" class="headerlink" title="自定义颜色"></a>自定义颜色</h2><p>修改 <code>bg:cyan fg:black</code> 可以更换配色：</p>
+<p><strong>可用颜色：</strong></p>
+<ul>
+<li><code>black</code>, <code>white</code>, <code>red</code>, <code>green</code>, <code>yellow</code>, <code>blue</code>, <code>magenta</code>, <code>cyan</code></li>
+<li>或使用 hex：<code>bg:#1e1e2e fg:#cdd6f4</code></li>
+</ul>
+<p><strong>示例（紫色背景）：</strong></p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">format</span> = <span class="string">&quot;&quot;&quot;[$username@$hostname$directory](bg:magenta fg:white) $character&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配合-iTerm2-使用"><a href="#配合-iTerm2-使用" class="headerlink" title="配合 iTerm2 使用"></a>配合 iTerm2 使用</h2><p>进一步优化终端体验：</p>
+<ol>
+<li><strong>设置字体</strong>：Preferences → Profiles → Text → Font → MesloLGS NF</li>
+<li><strong>启用真彩色</strong>：Preferences → Profiles → Terminal → Enable True Color</li>
+<li><strong>推荐配色</strong>：Dracula 或 Snazzy 主题</li>
+</ol>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="图标显示为乱码"><a href="#图标显示为乱码" class="headerlink" title="图标显示为乱码"></a>图标显示为乱码</h3><p>确保终端字体设置为 Nerd Font。</p>
+<h3 id="启动速度慢"><a href="#启动速度慢" class="headerlink" title="启动速度慢"></a>启动速度慢</h3><p>减少不必要的模块可以提升启动速度。</p>
+<h3 id="颜色不显示"><a href="#颜色不显示" class="headerlink" title="颜色不显示"></a>颜色不显示</h3><ul>
+<li>不要手动设置 TERM 环境变量</li>
+<li>某些终端（如 basic TUI）不支持颜色</li>
+</ul>
+<h2 id="配置文件位置"><a href="#配置文件位置" class="headerlink" title="配置文件位置"></a>配置文件位置</h2><table>
+<thead>
+<tr>
+<th>文件</th>
+<th>位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Starship 配置</td>
+<td><code>~/.config/starship.toml</code></td>
+</tr>
+<tr>
+<td>Zsh 初始化</td>
+<td><code>~/.zshrc</code></td>
+</tr>
+<tr>
+<td>Bash 初始化</td>
+<td><code>~/.bashrc</code></td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Starship 让终端焕然一新，推荐配置组合：</p>
+<ul>
+<li><strong>终端</strong>：iTerm2</li>
+<li><strong>Shell</strong>：Zsh</li>
+<li><strong>提示符</strong>：Starship</li>
+<li><strong>字体</strong>：MesloLGS NF</li>
+<li><strong>配色</strong>：青色背景 + 黑色字体</li>
+</ul>
+<p>Happy Coding!</p>
+<hr>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://starship.rs/">Starship 官方文档</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.jpg">
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Mac/" rel="tag"><i class="fa fa-tag"></i> Mac</a>
+              <a href="/tags/Starship/" rel="tag"><i class="fa fa-tag"></i> Starship</a>
+              <a href="/tags/%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/" rel="tag"><i class="fa fa-tag"></i> 终端美化</a>
+              <a href="/tags/Shell/" rel="tag"><i class="fa fa-tag"></i> Shell</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/07/16/%E4%BD%BF%E7%94%A8Hexo%E5%86%99%E5%8D%9A%E5%AE%A2/" rel="prev" title="使用Hexo写博客">
+                  <i class="fa fa-angle-left"></i> 使用Hexo写博客
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/04/19/WireGuard%20VPN%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/" rel="next" title="WireGuard VPN 服务器部署指南">
+                  WireGuard VPN 服务器部署指南 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2024 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">FoleyDang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/foleydang" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script>
+(function() {
+  // 只在文章页面生成右侧目录
+  if (!document.querySelector('.post-body')) return;
+  
+  // 从文章内容提取标题生成目录
+  var headers = document.querySelectorAll('.post-body h2, .post-body h3, .post-body h4');
+  if (headers.length === 0) return;
+  
+  var tocHtml = '<ol class="nav">';
+  headers.forEach(function(h, i) {
+    var level = parseInt(h.tagName.replace('H', ''));
+    var id = h.id || 'toc-header-' + i;
+    if (!h.id) h.id = id;
+    tocHtml += '<li class="nav-item nav-level-' + level + '"><a class="nav-link" href="#' + id + '">' + h.textContent + '</a></li>';
+  });
+  tocHtml += '</ol>';
+  
+  // 创建右侧目录容器
+  var rightToc = document.createElement('div');
+  rightToc.className = 'right-toc-container';
+  rightToc.innerHTML = '<div class="right-toc-title">文章目录</div><div class="right-toc-content">' + tocHtml + '</div>';
+  document.body.appendChild(rightToc);
+  
+  // 样式 - 支持多级目录缩进
+  var style = document.createElement('style');
+  style.innerHTML = `
+    .right-toc-container {
+      position: fixed;
+      right: 20px;
+      top: 80px;
+      width: 220px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 100;
+      font-size: 14px;
+      display: none;
+    }
+    .right-toc-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+    .right-toc-content ol {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .right-toc-content li {
+      margin: 4px 0;
+    }
+    .right-toc-content a {
+      color: #555;
+      text-decoration: none;
+      display: block;
+      padding: 4px 5px;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .right-toc-content a:hover {
+      background: #f0f0f0;
+      color: #49b1f5;
+    }
+    /* 多级目录缩进 */
+    .nav-level-2 {
+      padding-left: 0;
+    }
+    .nav-level-3 {
+      padding-left: 15px;
+    }
+    .nav-level-4 {
+      padding-left: 30px;
+    }
+    /* 不同级别的样式 */
+    .nav-level-2 a {
+      font-weight: 500;
+    }
+    .nav-level-3 a {
+      font-size: 13px;
+      color: #666;
+    }
+    .nav-level-4 a {
+      font-size: 12px;
+      color: #777;
+    }
+    @media (min-width: 1200px) {
+      .right-toc-container {
+        display: block;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      .right-toc-container {
+        background: #2a2a2a;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      }
+      .right-toc-title {
+        color: #ddd;
+        border-bottom-color: #444;
+      }
+      .right-toc-content a {
+        color: #aaa;
+      }
+      .right-toc-content a:hover {
+        background: #333;
+        color: #49b1f5;
+      }
+      .nav-level-3 a {
+        color: #bbb;
+      }
+      .nav-level-4 a {
+        color: #999;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+})();
+</script>
+
+</body>
+</html>
