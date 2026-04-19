@@ -1526,7 +1526,7 @@ pre code {
     transition: all 0.2s ease-in-out;
   }
   .links-of-author a::before {
-    background: #ba8bff;
+    background: #b3ffff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3427,7 +3427,8 @@ table {
     border-radius: 0;
   }
 }
-.post-toc-wrap {
+.post-toc-wrap,
+.sidebar .post-toc-wrap {
   display: none !important;
 }
 @media (min-width: 992px) {
@@ -3439,4 +3440,14 @@ table {
   .site-state {
     border-bottom-color: #444;
   }
+}
+.sidebar-inner .post-toc-wrap {
+  display: none !important;
+}
+.sidebar .sidebar-inner .post-toc-wrap,
+.sidebar .sidebar-inner .post-toc {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
