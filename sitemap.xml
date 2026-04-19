@@ -65,20 +65,6 @@
 
   
   <url>
-    <loc>https://foleydang.github.io/tags/Hexo/</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://foleydang.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://foleydang.github.io/tags/Mac/</loc>
     <lastmod>2026-04-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -106,17 +92,31 @@
     <priority>0.2</priority>
   </url>
   
-
-  
   <url>
-    <loc>https://foleydang.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <loc>https://foleydang.github.io/tags/Hexo/</loc>
     <lastmod>2026-04-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
+    <loc>https://foleydang.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
+  
+  <url>
     <loc>https://foleydang.github.io/categories/%E7%BB%88%E7%AB%AF%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://foleydang.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2026-04-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
