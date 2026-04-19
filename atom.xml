@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>FoleyDang</name>
+  </author>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  <id>https://foleydang.github.io/</id>
+  <link href="https://foleydang.github.io/" rel="alternate"/>
+  <link href="https://foleydang.github.io/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, FoleyDang</rights>
+  <subtitle>一个专注技术的程序员</subtitle>
+  <title>程序开发之道</title>
+  <updated>2025-07-17T03:53:05.000Z</updated>
+  <entry>
+    <author>
+      <name>FoleyDang</name>
+    </author>
+    <category term="技术" scheme="https://foleydang.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="Hexo" scheme="https://foleydang.github.io/tags/Hexo/"/>
+    <category term="博客" scheme="https://foleydang.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    <content>
+      <![CDATA[<p>使用 Hexo 搭建博客，且采用 NexT 主题，详细介绍写一篇新博客的步骤。</p><h2 id="创建新博客文章"><a href="#创建新博客文章" class="headerlink" title="创建新博客文章"></a>创建新博客文章</h2><p>在终端里，切换到博客根目录（也就是 foleydang 目录），然后运行下面的命令来创建新的博客文章：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /Users/bytedance/foleydang</span><br><span class="line">hexo new <span class="string">&quot;你的文章标题&quot;</span></span><br></pre></td></tr></table></figure><p>运行该命令后，Hexo 会在 source/_posts 目录下生成一个新的 Markdown 文件，文件名是你设置的文章标题。例如，创建名为 “新博客文章” 的文章：</p><h2 id="编辑博客文章"><a href="#编辑博客文章" class="headerlink" title="编辑博客文章"></a>编辑博客文章</h2><p>使用文本编辑器（像 Visual Studio Code、Sublime Text 等）打开刚生成的 Markdown 文件，文件开头会有类似下面的 Front-Matter 信息：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 新博客文章</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure><p>你可以按照需求补充或修改这些信息，比如添加 date（文章发布日期）、categories（文章分类）、tags（文章标签）等：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 新博客文章</span><br><span class="line"><span class="built_in">date</span>: 2025-07-16</span><br><span class="line">categories:</span><br><span class="line">- 技术</span><br><span class="line">tags:</span><br><span class="line">- Hexo</span><br><span class="line">- 博客</span><br><span class="line">---</span><br></pre></td></tr></table></figure><p>接着在 Front-Matter 之后撰写文章内容，Markdown 语法支持标题、列表、图片、链接等常见格式。例如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 新博客文章</span><br><span class="line"><span class="built_in">date</span>: 2025-07-16</span><br><span class="line">categories:</span><br><span class="line">- 技术</span><br><span class="line">tags:</span><br><span class="line">- Hexo</span><br><span class="line">- 博客</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="comment">## 引言</span></span><br><span class="line">这是我的第一篇使用 Hexo 搭建的博客文章。</span><br><span class="line"></span><br><span class="line"><span class="comment">### 搭建过程</span></span><br><span class="line">在搭建博客时，我使用了 Hexo 这个静态网站生成器，并且选择了 NexT 主题。具体步骤如下：</span><br><span class="line">1. 安装 Hexo</span><br><span class="line">2. 创建新的 Hexo 项目</span><br><span class="line">3. 安装 NexT 主题</span><br><span class="line">4. 配置博客信息</span><br><span class="line"></span><br><span class="line"><span class="comment">### 总结</span></span><br><span class="line">通过这次搭建博客的经历，我对静态网站生成器有了更深入的了解。</span><br></pre></td></tr></table></figure><h2 id="本地预览文章"><a href="#本地预览文章" class="headerlink" title="本地预览文章"></a>本地预览文章</h2><p>在终端运行以下命令生成静态文件并启动本地服务器：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure><p>或者使用简写命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>启动成功后，在浏览器访问 <a href="http://localhost:4000/">http://localhost:4000</a> 就能预览新写的博客文章。</p><h2 id="部署博客到远程仓库"><a href="#部署博客到远程仓库" class="headerlink" title="部署博客到远程仓库"></a>部署博客到远程仓库</h2><p>若要将博客部署到 GitHub Pages 等远程仓库，需先在 _config.yml 文件里配置部署信息，当前配置如下：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:foleydang/foleydang.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure><p>配置完成后，在终端运行以下命令部署博客：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure><p>或者使用简写命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>部署成功后，访问 <a href="https://foleydang.github.io/">https://foleydang.github.io</a> 就能看到新发布的博客文章。</p>]]>
+    </content>
+    <id>https://foleydang.github.io/2025/07/16/%E4%BD%BF%E7%94%A8Hexo%E5%86%99%E5%8D%9A%E5%AE%A2/</id>
+    <link href="https://foleydang.github.io/2025/07/16/%E4%BD%BF%E7%94%A8Hexo%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
+    <published>2025-07-16T13:03:39.000Z</published>
+    <summary>
+      <![CDATA[<p>使用 Hexo 搭建博客，且采用 NexT 主题，详细介绍写一篇新博客的步骤。</p>
+<h2 id="创建新博客文章"><a href="#创建新博客文章" class="headerlink" title="创建新博客文章"></a>创建新博客文章</h2><p>在终端]]>
+    </summary>
+    <title>使用Hexo写博客</title>
+    <updated>2025-07-17T03:53:05.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>FoleyDang</name>
+    </author>
+    <category term="技术" scheme="https://foleydang.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="Hexo" scheme="https://foleydang.github.io/tags/Hexo/"/>
+    <category term="博客" scheme="https://foleydang.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    <content>
+      <![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]>
+    </content>
+    <id>https://foleydang.github.io/2024/01/16/hello-world/</id>
+    <link href="https://foleydang.github.io/2024/01/16/hello-world/"/>
+    <published>2024-01-16T03:51:45.000Z</published>
+    <summary>
+      <![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for]]>
+    </summary>
+    <title>Hello World</title>
+    <updated>2025-07-17T03:52:38.000Z</updated>
+  </entry>
+</feed>

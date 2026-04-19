@@ -1526,7 +1526,7 @@ pre code {
     transition: all 0.2s ease-in-out;
   }
   .links-of-author a::before {
-    background: #9fdfab;
+    background: #b3ecd4;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3425,5 +3425,26 @@ table {
   }
   .post-block {
     border-radius: 0;
+  }
+}
+.site-state {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+}
+.post-toc {
+  margin-top: 20px;
+}
+.toc-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #555;
+}
+@media (prefers-color-scheme: dark) {
+  .site-state {
+    border-bottom-color: #444;
+  }
+  .toc-title {
+    color: #aaa;
   }
 }
