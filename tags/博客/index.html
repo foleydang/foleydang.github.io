@@ -331,22 +331,28 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-
 <script>
 (function() {
-  // 检查是否是文章页面
+  // 只在文章页面生成右侧目录
   if (!document.querySelector('.post-body')) return;
   
-  // 获取原始目录内容
-  var tocOriginal = document.querySelector('.post-toc');
-  if (!tocOriginal || tocOriginal.innerHTML.trim() === '') return;
+  // 从文章内容提取标题生成目录
+  var headers = document.querySelectorAll('.post-body h2, .post-body h3, .post-body h4');
+  if (headers.length === 0) return;
+  
+  var tocHtml = '<ol class="nav">';
+  headers.forEach(function(h, i) {
+    var level = h.tagName.replace('H', '');
+    var id = h.id || 'toc-header-' + i;
+    if (!h.id) h.id = id;
+    tocHtml += '<li class="nav-item nav-level-' + level + '"><a class="nav-link" href="#' + id + '">' + h.textContent + '</a></li>';
+  });
+  tocHtml += '</ol>';
   
   // 创建右侧目录容器
   var rightToc = document.createElement('div');
   rightToc.className = 'right-toc-container';
-  rightToc.innerHTML = '<div class="right-toc-title">文章目录</div><div class="right-toc-content">' + tocOriginal.innerHTML + '</div>';
-  
-  // 添加到页面
+  rightToc.innerHTML = '<div class="right-toc-title">文章目录</div><div class="right-toc-content">' + tocHtml + '</div>';
   document.body.appendChild(rightToc);
   
   // 样式
@@ -379,9 +385,6 @@
       padding-left: 0;
       margin: 0;
     }
-    .right-toc-content ol ol {
-      padding-left: 15px;
-    }
     .right-toc-content li {
       margin: 5px 0;
     }
@@ -395,7 +398,7 @@
     }
     .right-toc-content a:hover {
       background: #f0f0f0;
-      color: var(--primary-color, #49b1f5);
+      color: #49b1f5;
     }
     @media (min-width: 1200px) {
       .right-toc-container {
@@ -416,6 +419,7 @@
       }
       .right-toc-content a:hover {
         background: #333;
+        color: #49b1f5;
       }
     }
   `;

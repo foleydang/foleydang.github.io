@@ -1526,7 +1526,7 @@ pre code {
     transition: all 0.2s ease-in-out;
   }
   .links-of-author a::before {
-    background: #098a37;
+    background: #ffbe74;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -1723,54 +1723,6 @@ pre code {
   to {
     height: var(--active-panel-height, auto);
   }
-}
-.post-toc {
-  font-size: 0.875em;
-}
-.post-toc ol {
-  list-style: none;
-  margin: 0;
-  padding: 0 2px 0 10px;
-  text-align: left;
-}
-.post-toc ol > :last-child {
-  margin-bottom: 5px;
-}
-.post-toc ol > ol {
-  padding-left: 0;
-}
-.post-toc ol a {
-  transition: all 0.2s ease-in-out;
-}
-.post-toc .nav-item {
-  line-height: 1.8;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.post-toc .nav .nav-child {
-  --height: 0;
-  height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition-property: height, opacity, visibility;
-  transition: 0.2s ease-in-out;
-  visibility: hidden;
-}
-.post-toc .nav .active > .nav-child {
-  height: var(--height, auto);
-  opacity: 1;
-  visibility: unset;
-}
-.post-toc .nav .active > a {
-  border-bottom-color: #fc6423;
-  color: #fc6423;
-}
-.post-toc .nav .active-current > a {
-  color: #fc6423;
-}
-.post-toc .nav .active-current > a:hover {
-  color: #fc6423;
 }
 .site-author-image {
   border: 1px solid #eee;
@@ -3358,9 +3310,6 @@ table {
 .sidebar {
   transition: all 0.3s ease;
 }
-.site-nav {
-  font-weight: 500;
-}
 .footer-inner {
   font-size: 0.9em;
 }
@@ -3422,25 +3371,5 @@ table {
 @media (max-width: 767px) {
   .posts-expand .post {
     margin-top: 40px;
-  }
-  .post-block {
-    border-radius: 0;
-  }
-}
-.sidebar-nav {
-  display: none !important;
-}
-.post-toc-wrap {
-  display: none !important;
-}
-.site-overview-wrap {
-  display: block !important;
-}
-.sidebar-inner {
-  sidebar-toc-active: false !important;
-}
-@media (prefers-color-scheme: dark) {
-  blockquote {
-    background: #2a2a2a;
   }
 }

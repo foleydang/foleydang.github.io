@@ -159,7 +159,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -172,7 +172,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -400,22 +399,28 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-
 <script>
 (function() {
-  // 检查是否是文章页面
+  // 只在文章页面生成右侧目录
   if (!document.querySelector('.post-body')) return;
   
-  // 获取原始目录内容
-  var tocOriginal = document.querySelector('.post-toc');
-  if (!tocOriginal || tocOriginal.innerHTML.trim() === '') return;
+  // 从文章内容提取标题生成目录
+  var headers = document.querySelectorAll('.post-body h2, .post-body h3, .post-body h4');
+  if (headers.length === 0) return;
+  
+  var tocHtml = '<ol class="nav">';
+  headers.forEach(function(h, i) {
+    var level = h.tagName.replace('H', '');
+    var id = h.id || 'toc-header-' + i;
+    if (!h.id) h.id = id;
+    tocHtml += '<li class="nav-item nav-level-' + level + '"><a class="nav-link" href="#' + id + '">' + h.textContent + '</a></li>';
+  });
+  tocHtml += '</ol>';
   
   // 创建右侧目录容器
   var rightToc = document.createElement('div');
   rightToc.className = 'right-toc-container';
-  rightToc.innerHTML = '<div class="right-toc-title">文章目录</div><div class="right-toc-content">' + tocOriginal.innerHTML + '</div>';
-  
-  // 添加到页面
+  rightToc.innerHTML = '<div class="right-toc-title">文章目录</div><div class="right-toc-content">' + tocHtml + '</div>';
   document.body.appendChild(rightToc);
   
   // 样式
@@ -448,9 +453,6 @@
       padding-left: 0;
       margin: 0;
     }
-    .right-toc-content ol ol {
-      padding-left: 15px;
-    }
     .right-toc-content li {
       margin: 5px 0;
     }
@@ -464,7 +466,7 @@
     }
     .right-toc-content a:hover {
       background: #f0f0f0;
-      color: var(--primary-color, #49b1f5);
+      color: #49b1f5;
     }
     @media (min-width: 1200px) {
       .right-toc-container {
@@ -485,6 +487,7 @@
       }
       .right-toc-content a:hover {
         background: #333;
+        color: #49b1f5;
       }
     }
   `;
