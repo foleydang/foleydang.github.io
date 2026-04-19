@@ -331,5 +331,96 @@
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
 
+<script>
+(function() {
+  // 检查是否是文章页面
+  if (!document.querySelector('.post-body')) return;
+  
+  // 获取原始目录内容
+  var tocOriginal = document.querySelector('.post-toc');
+  if (!tocOriginal || tocOriginal.innerHTML.trim() === '') return;
+  
+  // 创建右侧目录容器
+  var rightToc = document.createElement('div');
+  rightToc.className = 'right-toc-container';
+  rightToc.innerHTML = '<div class="right-toc-title">文章目录</div><div class="right-toc-content">' + tocOriginal.innerHTML + '</div>';
+  
+  // 添加到页面
+  document.body.appendChild(rightToc);
+  
+  // 样式
+  var style = document.createElement('style');
+  style.innerHTML = `
+    .right-toc-container {
+      position: fixed;
+      right: 20px;
+      top: 80px;
+      width: 200px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 100;
+      font-size: 14px;
+      display: none;
+    }
+    .right-toc-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+    .right-toc-content ol {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .right-toc-content ol ol {
+      padding-left: 15px;
+    }
+    .right-toc-content li {
+      margin: 5px 0;
+    }
+    .right-toc-content a {
+      color: #555;
+      text-decoration: none;
+      display: block;
+      padding: 3px 5px;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .right-toc-content a:hover {
+      background: #f0f0f0;
+      color: var(--primary-color, #49b1f5);
+    }
+    @media (min-width: 1200px) {
+      .right-toc-container {
+        display: block;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      .right-toc-container {
+        background: #2a2a2a;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      }
+      .right-toc-title {
+        color: #ddd;
+        border-bottom-color: #444;
+      }
+      .right-toc-content a {
+        color: #aaa;
+      }
+      .right-toc-content a:hover {
+        background: #333;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+})();
+</script>
+
 </body>
 </html>
